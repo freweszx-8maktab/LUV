@@ -1,0 +1,289 @@
+<title>Для тебя одной</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Jost:wght@400;500&family=Marck+Script&display=swap">
+<style>
+/* Layout: one calm column on a dusk-rose ground; the heart button is the single bold moment */
+:root {
+  --bg: #fbeff1;
+  --bg-soft: #f6e0e5;
+  --fg: #3b1f2b;
+  --muted: #7d5a67;
+  --accent: #c2335d;
+  --accent-ink: #ffffff;
+  --line: #e9c6d0;
+  --card: #fff8f9;
+  --font-display: "Cormorant Garamond", "Georgia", serif;
+  --font-body: "Jost", "Segoe UI", system-ui, sans-serif;
+  --font-hand: "Marck Script", "Segoe Script", cursive;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #25121e;
+    --bg-soft: #321a28;
+    --fg: #fbe9ee;
+    --muted: #c9a2b1;
+    --accent: #ff6f9b;
+    --accent-ink: #2a1019;
+    --line: #4a2a3b;
+    --card: #2e1725;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #25121e;
+  --bg-soft: #321a28;
+  --fg: #fbe9ee;
+  --muted: #c9a2b1;
+  --accent: #ff6f9b;
+  --accent-ink: #2a1019;
+  --line: #4a2a3b;
+  --card: #2e1725;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.6;
+  padding-block: 24px 56px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+main { max-width: 640px; margin: 0 auto; display: flex; flex-direction: column; gap: 72px; }
+section { min-width: 0; }
+h1, h2 { font-family: var(--font-display); font-weight: 600; line-height: 1.1; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(40px, 11vw, 68px); font-style: italic; }
+h2 { font-size: clamp(30px, 7vw, 40px); }
+p { margin: 0; }
+.eyebrow { font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+
+/* hero */
+.hero { display: flex; flex-direction: column; gap: 20px; padding-top: 24px; }
+.for { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px; }
+.for input {
+  font-family: var(--font-hand); font-size: 34px; color: var(--accent);
+  background: transparent; border: 0; border-bottom: 1px dashed var(--line);
+  width: min(100%, 11em); padding: 0 4px; min-width: 0;
+}
+.for input:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+.lead { color: var(--muted); max-width: 34em; font-size: 19px; }
+
+/* counter */
+.counter { background: var(--bg-soft); border-radius: 28px; padding: 32px 24px; display: flex; flex-direction: column; gap: 18px; }
+.big { display: flex; flex-wrap: wrap; align-items: baseline; gap: 14px; }
+.big b { font-family: var(--font-display); font-size: clamp(64px, 20vw, 108px); line-height: 0.95; color: var(--accent); font-weight: 600; font-variant-numeric: tabular-nums; }
+.big span { font-family: var(--font-display); font-style: italic; font-size: 26px; }
+.sub { color: var(--muted); font-variant-numeric: tabular-nums; }
+details { color: var(--muted); font-size: 15px; }
+summary { cursor: pointer; width: fit-content; }
+summary:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+details input { margin-top: 10px; font: inherit; color: var(--fg); background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 8px 12px; }
+
+/* reasons */
+.reasons { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 28px; }
+.reason { border-top: 1px solid var(--line); padding-top: 14px; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.reason h3 { margin: 0; font-family: var(--font-hand); font-weight: 400; font-size: 26px; color: var(--accent); }
+.reason p { color: var(--muted); font-size: 16px; }
+
+/* heart */
+.heartbox { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 22px; }
+.heartbtn { background: none; border: 0; cursor: pointer; padding: 8px; border-radius: 50%; transition: transform 0.15s ease; }
+.heartbtn:active { transform: scale(0.92); }
+.heartbtn svg { width: 150px; height: 150px; display: block; fill: var(--accent); animation: beat 1.6s ease-in-out infinite; }
+@keyframes beat { 0%, 100% { transform: scale(1); } 14% { transform: scale(1.09); } 28% { transform: scale(1); } 42% { transform: scale(1.06); } 56% { transform: scale(1); } }
+.msg { font-family: var(--font-display); font-style: italic; font-size: clamp(24px, 6vw, 32px); line-height: 1.25; min-height: 4.2em; max-width: 22em; text-wrap: balance; }
+.hint { font-size: 14px; color: var(--muted); }
+.float { position: fixed; pointer-events: none; z-index: 20; color: var(--accent); font-size: 22px; animation: rise 1.8s ease-out forwards; }
+@keyframes rise { from { transform: translateY(0) scale(0.7); opacity: 1; } to { transform: translateY(-190px) scale(1.2); opacity: 0; } }
+
+/* question */
+.ask { background: var(--bg-soft); border-radius: 28px; padding: 40px 24px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 24px; overflow: hidden; }
+.choices { position: relative; display: flex; justify-content: center; align-items: center; gap: 18px; flex-wrap: wrap; min-height: 120px; width: 100%; }
+.yes, .no { font: inherit; font-weight: 500; border-radius: 999px; padding: 14px 30px; cursor: pointer; border: 1px solid var(--accent); }
+.yes { background: var(--accent); color: var(--accent-ink); transition: transform 0.2s ease; }
+.no { background: transparent; color: var(--accent); transition: transform 0.25s ease; }
+.answer { font-family: var(--font-display); font-style: italic; font-size: clamp(26px, 6vw, 34px); line-height: 1.25; text-wrap: balance; }
+.answer small { display: block; font-family: var(--font-body); font-style: normal; font-size: 15px; color: var(--muted); margin-top: 10px; }
+
+footer { text-align: center; color: var(--muted); font-family: var(--font-hand); font-size: 24px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .heartbtn svg, .float { animation: none; }
+  .float { display: none; }
+  .no, .yes { transition: none; }
+}
+</style>
+
+<main>
+  <section class="hero">
+    <p class="eyebrow">Письмо без марки</p>
+    <div class="for">
+      <span class="eyebrow">Для</span>
+      <input id="name" type="text" value="Жанерке" placeholder="напиши имя" maxlength="30" autocomplete="off" aria-label="Имя">
+    </div>
+    <h1>Рядом с тобой мне спокойно и радостно.</h1>
+    <p class="lead">Я не мастер красивых речей, поэтому сделал для тебя маленькое место, где собрано то, что я чувствую. Пролистай до конца, там меня ждёт один вопрос.</p>
+  </section>
+
+  <section class="counter" aria-labelledby="c-title">
+    <p class="eyebrow" id="c-title">Мы вместе уже</p>
+    <div class="big"><b id="days">0</b><span id="days-word">дней</span></div>
+    <p class="sub" id="detail"></p>
+    <details>
+      <summary>Изменить дату</summary>
+      <label for="since" class="sr">Дата, с которой мы вместе</label>
+      <input id="since" type="date">
+    </details>
+  </section>
+
+  <section>
+    <h2>За что я тебя люблю</h2>
+    <div class="reasons">
+      <div class="reason"><h3>За смех</h3><p>Когда ты смеёшься, у меня сразу проходят все плохие дни.</p></div>
+      <div class="reason"><h3>За заботу</h3><p>Ты замечаешь мелочи, о которых я даже не говорил вслух.</p></div>
+      <div class="reason"><h3>За тишину вдвоём</h3><p>Рядом с тобой не нужно ничего придумывать. Просто быть.</p></div>
+      <div class="reason"><h3>За силу</h3><p>Ты справляешься с тем, что другим казалось бы невозможным, и остаёшься нежной.</p></div>
+      <div class="reason"><h3>За взгляд</h3><p>Один твой взгляд говорит мне больше, чем целая страница слов.</p></div>
+      <div class="reason"><h3>За то, что ты есть</h3><p>Просто за то, что ты есть в моей жизни именно такая.</p></div>
+    </div>
+  </section>
+
+  <section class="heartbox">
+    <h2>Нажми на сердце</h2>
+    <button class="heartbtn" id="heart" type="button" aria-label="Показать следующее сообщение">
+      <svg viewBox="0 0 32 29" aria-hidden="true"><path d="M23.6 0c-3.4 0-6.3 2.7-7.6 5.6C14.700 2.700 11.800 0 8.400 0 3.800 0 0 3.800 0 8.600c0 9.500 9.500 11.600 16 20.400 6.500-8.800 16-10.900 16-20.400C32 3.800 28.200 0 23.600 0z"/></svg>
+    </button>
+    <p class="msg" id="msg" aria-live="polite">Нажми, и я скажу тебе кое-что.</p>
+    <p class="hint" id="hint">Сообщений много, нажимай ещё.</p>
+  </section>
+
+  <section class="ask">
+    <h2 id="q">Станешь ли ты моей навсегда?</h2>
+    <div class="choices" id="choices">
+      <button class="yes" id="yes" type="button">Да, конечно</button>
+      <button class="no" id="no" type="button">Подумаю</button>
+    </div>
+    <p class="answer" id="answer" hidden></p>
+  </section>
+
+  <footer>Твой, <span id="sign">навсегда</span></footer>
+</main>
+
+<script>
+(function () {
+  function get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+  function put(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+
+  var nameEl = document.getElementById('name');
+  var saved = get('love-name');
+  if (saved) nameEl.value = saved;
+  nameEl.addEventListener('input', function () { put('love-name', nameEl.value); });
+  if (saved === 'Жанерке' || !saved) { nameEl.value = 'Жанерке'; }
+
+  /* days counter */
+  function plural(n, a, b, c) {
+    var m10 = n % 10, m100 = n % 100;
+    if (m10 === 1 && m100 !== 11) return a;
+    if (m10 >= 2 && m10 <= 4 && (m100 < 12 || m100 > 14)) return b;
+    return c;
+  }
+  var sinceEl = document.getElementById('since');
+  function iso(d) {
+    var m = String(d.getMonth() + 1).padStart(2, '0');
+    var day = String(d.getDate()).padStart(2, '0');
+    return d.getFullYear() + '-' + m + '-' + day;
+  }
+  var storedDate = get('love-since');
+  if (!storedDate) {
+    var d0 = new Date(); d0.setDate(d0.getDate() - 100);
+    storedDate = iso(d0);
+  }
+  sinceEl.value = storedDate;
+
+  function renderDays() {
+    var parts = (sinceEl.value || '').split('-');
+    if (parts.length !== 3) return;
+    var start = new Date(+parts[0], +parts[1] - 1, +parts[2]);
+    var now = new Date();
+    var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    var days = Math.max(0, Math.round((today - start) / 86400000));
+    document.getElementById('days').textContent = days;
+    document.getElementById('days-word').textContent = plural(days, 'день', 'дня', 'дней') + ' рядом с тобой';
+    var weeks = Math.floor(days / 7);
+    document.getElementById('detail').textContent =
+      weeks + ' ' + plural(weeks, 'неделя', 'недели', 'недель') + ' и ' + (days * 24).toLocaleString('ru-RU') + ' ' + plural(days * 24, 'час', 'часа', 'часов') + ', и мне мало.';
+  }
+  sinceEl.addEventListener('change', function () { put('love-since', sinceEl.value); renderDays(); });
+  renderDays();
+
+  /* heart */
+  var messages = [
+    'С тобой даже обычный вторник становится праздником.',
+    'Я скучаю по тебе, даже когда ты рядом.',
+    'Ты моя любимая мысль перед сном и первая утром.',
+    'Рядом с тобой я хочу быть лучше.',
+    'Мой дом это не место, а ты.',
+    'Я бы выбрал тебя снова, в любой жизни.',
+    'Твоя улыбка лечит всё.',
+    'Спасибо, что ты есть и что ты моя.'
+  ];
+  var idx = -1;
+  var msgEl = document.getElementById('msg');
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function burst(x, y) {
+    if (reduce) return;
+    for (var i = 0; i < 7; i++) {
+      var h = document.createElement('span');
+      h.className = 'float';
+      h.textContent = '♥';
+      h.style.left = (x + (Math.random() * 120 - 60)) + 'px';
+      h.style.top = (y + (Math.random() * 30 - 15)) + 'px';
+      h.style.animationDelay = (Math.random() * 0.3) + 's';
+      document.body.appendChild(h);
+      setTimeout((function (el) { return function () { el.remove(); }; })(h), 2300);
+    }
+  }
+  document.getElementById('heart').addEventListener('click', function (e) {
+    idx = (idx + 1) % messages.length;
+    msgEl.textContent = messages[idx];
+    var r = e.currentTarget.getBoundingClientRect();
+    burst(r.left + r.width / 2, r.top + r.height / 2);
+  });
+
+  /* question */
+  var yes = document.getElementById('yes');
+  var no = document.getElementById('no');
+  var scale = 1, noCount = 0;
+  var noTexts = ['Подумаю', 'Ты уверена?', 'Ну пожалуйста', 'Я буду ждать', 'Не получится'];
+  function dodge() {
+    noCount++;
+    no.textContent = noTexts[Math.min(noCount, noTexts.length - 1)];
+    var dx = (Math.random() * 120 - 60);
+    var dy = (Math.random() * 60 - 30);
+    no.style.transform = 'translate(' + dx + 'px,' + dy + 'px)';
+    scale = Math.min(scale + 0.12, 1.6);
+    yes.style.transform = 'scale(' + scale + ')';
+  }
+  no.addEventListener('pointerenter', dodge);
+  no.addEventListener('click', function (e) { e.preventDefault(); dodge(); });
+  yes.addEventListener('click', function (e) {
+    var n = nameEl.value.trim();
+    document.getElementById('q').hidden = true;
+    document.getElementById('choices').hidden = true;
+    var a = document.getElementById('answer');
+    a.hidden = false;
+    a.innerHTML = '';
+    a.appendChild(document.createTextNode((n ? n + ', я' : 'Я') + ' самый счастливый человек на свете.'));
+    var s = document.createElement('small');
+    s.textContent = 'Скажи мне это ещё и вслух.';
+    a.appendChild(s);
+    var r = a.getBoundingClientRect();
+    burst(r.left + r.width / 2, r.top + 40);
+    setTimeout(function () { burst(r.left + r.width / 3, r.top + 60); }, 300);
+  });
+})();
+</script>
